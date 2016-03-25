@@ -1,5 +1,6 @@
 class Place < ActiveRecord::Base
 	before_create :set_daterange
+	has_one :image
 
 
 

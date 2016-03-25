@@ -25,16 +25,21 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     @place = Place.new(place_params)
-
+    
     respond_to do |format|
       if @place.save
+        @place.image = Image.new(:img => params[:picture].tempfile, :file_name => params[:picture].original_filename)
         format.html { redirect_to @place, notice: 'Place was successfully created.' }
         format.json { render :show, status: :created, location: @place }
+
       else
         format.html { render :new }
         format.json { render json: @place.errors, status: :unprocessable_entity }
       end
     end
+
+
+
   end
 
   # PATCH/PUT /places/1

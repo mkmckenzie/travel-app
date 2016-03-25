@@ -30,5 +30,11 @@
   <%= @place.visited %>
 </p>
 
+<p>
+  <img src=<%= url_for(:controller => "image", 
+                      :action => "show", 
+                      :id => @place.image.id) %> />
+</p>
+
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
