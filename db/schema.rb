@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20160325202143) do
   create_table "places", force: :cascade do |t|
     t.string    "name"
     t.text      "description"
-    t.datetime  "start_date"
-    t.datetime  "end_date"
+    t.date      "start_date"
+    t.date      "end_date"
     t.daterange "date_range"
     t.boolean   "visited"
     t.datetime  "created_at",  null: false
