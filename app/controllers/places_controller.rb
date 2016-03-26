@@ -28,7 +28,11 @@ class PlacesController < ApplicationController
     
     respond_to do |format|
       if @place.save
-        @place.image = Image.new(:img => params[:picture].tempfile, :file_name => params[:picture].original_filename)
+        @place.image = Image.new(
+          :img          => params[:picture].read,
+          :content_type => params[:picture].content_type,
+          :file_name    => params[:picture].original_filename
+        )
         format.html { redirect_to @place, notice: 'Place was successfully created.' }
         format.json { render :show, status: :created, location: @place }
 
